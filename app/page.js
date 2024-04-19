@@ -25,11 +25,9 @@ export default function Home() {
       <div className="row-start-1 row-end-3">
         <table className="w-full hidden md:block">
           <thead
-            data-aos="zoom-in"
-            data-aos-duration="500"
             className=" border-2 border-[#e3e5ec]">
             <tr className="bg-gray-200">
-              <th className=" p-2 w-28 lg:w-40 text-sm md:text-base font-semibold  text-left">
+              <th className=" p-2 flex ml-6 w-28 lg:w-40 text-sm md:text-base font-semibold  text-left">
                 Date
               </th>
               <th className=" p-2 w-[520px] lg:w-[768px] xl:w-[947px] 2xl:w-[1195px] text-sm md:text-base  font-semibold text-left">
@@ -44,18 +42,16 @@ export default function Home() {
             {data.map((items, index) => {
               return (
                 <tr
-                  data-aos="zoom-in"
-                  data-aos-duration="600"
                   className=" items-center"
                   key={index}
                 >
-                  <td className="p-2  text-xs  gap-2 flex flex-col whitespace-nowrap">
+                  <td className="p-2  text-xs ml-6 mt-5 gap-2 flex flex-col whitespace-nowrap">
                     <h1 className="font-semibold text-gray-500 md:text-sm 2xl:text-base">{items.date}</h1>
                     <h1 className="font-semibold text-gray-400">{items.time}</h1>
                   </td>
 
-                  <td className="p-2  text-xs md:text-sm  whitespace-nowrap">
-                    <div className="flex gap-2">
+                  <td className="p-1  text-xs md:text-sm  whitespace-nowrap">
+                    <div className="flex ">
                       <h1 className="font-semibold 2xl:text-base text-gray-500">
                         {items.name}
                       </h1>
@@ -80,7 +76,7 @@ export default function Home() {
             return (
               <div key={index} className="p-4 rounded-lg gap-2 flex flex-col shadow-lg ">
                 <div className="flex flex-col gap-3 text-sm">
-                  <div>
+                  <div >
                     <h1 className="text-sm font-semibold w-full break-words">
                       {item.name}
                     </h1>
