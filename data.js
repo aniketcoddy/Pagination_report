@@ -1,5 +1,5 @@
 
-export const data = [
+ export const data = [
     {
         date:"22.07.2021",
         time:"16:02 PM",
