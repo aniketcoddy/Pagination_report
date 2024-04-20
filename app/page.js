@@ -9,18 +9,21 @@ import Pagination from "./component/Pagination";
 
 export default function Home() {
 
-const[current , setCurrent] = useState(1)
-const[dataPerPage , setDataPerPage] = useState(7)
+  const [current, setCurrent] = useState(1)
+  const [dataPerPage, setDataPerPage] = useState(7)
+  const [selectedValue, setSelectedValue] = useState(dataPerPage);
 
+  const handleChange = (e) => {
+    setDataPerPage(parseInt(e.target.value));
+  };
 
- const lastPostIndex = current * dataPerPage;
- const firstPostIndex = lastPostIndex - dataPerPage
+  const lastPostIndex = current * dataPerPage;
+  const firstPostIndex = lastPostIndex - dataPerPage
 
-const currentData = data.slice(firstPostIndex , lastPostIndex) 
+  const currentData = data.slice(firstPostIndex, lastPostIndex)
 
   return (
-    <div className="flex flex-col border-2 border-black h-fit  m-2 items-center rounded-xl shadow-xl shadow-black">
-
+    <div className="flex flex-col border-2 border-black h-[690px] m-2 items-center rounded-xl shadow-xl shadow-black">
       {/* heading */}
       <div className="bg-white flex justify-between items-center py-1 px-3 md:w-[770px] lg:w-[1060px] xl:w-[1250px] 2xl:w-[1500px] row-start-1 row-end-3">
         <h1 className="text-white hidden sm:flex">.</h1>
@@ -32,7 +35,7 @@ const currentData = data.slice(firstPostIndex , lastPostIndex)
       </div>
 
       {/* table content */}
-      <div className="row-start-1 row-end-3">
+      <div className="row-start-1 overflow-y-scroll h-full row-end-3">
         <table className="w-full hidden md:block">
           <thead
             className=" border-2 border-[#e3e5ec]">
@@ -69,7 +72,7 @@ const currentData = data.slice(firstPostIndex , lastPostIndex)
 
                   <td className="p-2 ">
                     <div className="text-center">
-                    <button><TbFileDownload className="w-7 h-7" /></button>
+                      <button><TbFileDownload className="w-7 h-7" /></button>
                     </div>
                   </td>
 
@@ -81,7 +84,7 @@ const currentData = data.slice(firstPostIndex , lastPostIndex)
 
         {/* for smaller screens */}
         <div className="grid grid-cols-1  gap-4 m-3 md:hidden">
-          {data.map((item, index) => {
+          {currentData.map((item, index) => {
             return (
               <div key={index} className="p-4 rounded-lg gap-2 flex flex-col shadow-lg ">
                 <div className="flex flex-col gap-3 text-sm">
@@ -104,8 +107,22 @@ const currentData = data.slice(firstPostIndex , lastPostIndex)
         </div>
       </div>
 
-      <div className="bg-green-700 row-start-2 row-end-3">
-        <Pagination totalPosts={data.length} postsPerPage={dataPerPage} setCurrent={setCurrent} current={current}/>
+      <div className="border-t-[1px] gap-10 border-gray-300 w-full flex justify-center items-center">
+        <Pagination totalPosts={data.length} postsPerPage={dataPerPage} setCurrent={setCurrent} current={current} />
+        <div className="flex items-center gap-3">
+          <p className="flex text-sm font-medium text-gray-500">Rows per page</p>
+          <select
+            value={dataPerPage}
+            onChange={handleChange}
+            className="w-18 h-8 px-3 text-sm text-gray-700 border-[3px] rounded-lg focus:outline-none focus:border-blue-500"
+          >
+            {[...Array(10).keys()].map((num) => (
+              <option key={num + 1} value={num + 1}>
+                {num + 1}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
     </div>
   );
