@@ -35,7 +35,7 @@ export default function Home() {
       </div>
 
       {/* table content */}
-      <div className="row-start-1 overflow-y-scroll h-full row-end-3">
+      <div className="row-start-1 overflow-y-scroll scrollbar-thin scrollbar-track-white scrollbar-thumb-orange-500 h-full row-end-3">
         <table className="w-full hidden md:block">
           <thead
             className=" border-2 border-[#e3e5ec]">
@@ -114,7 +114,7 @@ export default function Home() {
           <select
             value={dataPerPage}
             onChange={handleChange}
-            className="w-18 h-8 px-3 text-sm text-gray-700 border-[3px] rounded-lg focus:outline-none focus:border-blue-500"
+            className="w-18 h-8 px-3 text-sm text-gray-700 border-[3px] rounded-lg focus:outline-none focus:border-orange-500"
           >
             {[...Array(10).keys()].map((num) => (
               <option key={num + 1} value={num + 1}>
