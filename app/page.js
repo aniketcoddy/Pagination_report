@@ -4,12 +4,22 @@ import { TbFileDownload } from "react-icons/tb";
 import { LuFilter } from "react-icons/lu";
 import { MdOutlineCancel } from "react-icons/md";
 import { data } from "../data"
+import { useState } from "react";
+import Pagination from "./component/Pagination";
 
 export default function Home() {
 
+const[current , setCurrent] = useState(1)
+const[dataPerPage , setDataPerPage] = useState(7)
+
+
+ const lastPostIndex = current * dataPerPage;
+ const firstPostIndex = lastPostIndex - dataPerPage
+
+const currentData = data.slice(firstPostIndex , lastPostIndex) 
 
   return (
-    <div className="flex flex-col border-2 border-black h-fit m-2 items-center rounded-xl shadow-xl shadow-black">
+    <div className="flex flex-col border-2 border-black h-fit  m-2 items-center rounded-xl shadow-xl shadow-black">
 
       {/* heading */}
       <div className="bg-white flex justify-between items-center py-1 px-3 md:w-[770px] lg:w-[1060px] xl:w-[1250px] 2xl:w-[1500px] row-start-1 row-end-3">
@@ -39,12 +49,11 @@ export default function Home() {
             </tr>
           </thead>
           <tbody >
-            {data.map((items, index) => {
+            {currentData.map((items, index) => {
               return (
                 <tr
                   className=" items-center"
-                  key={index}
-                >
+                  key={index}>
                   <td className="p-2  text-xs ml-6 mt-5 gap-2 flex flex-col whitespace-nowrap">
                     <h1 className="font-semibold text-gray-500 md:text-sm 2xl:text-base">{items.date}</h1>
                     <h1 className="font-semibold text-gray-400">{items.time}</h1>
@@ -96,7 +105,7 @@ export default function Home() {
       </div>
 
       <div className="bg-green-700 row-start-2 row-end-3">
-        
+        <Pagination totalPosts={data.length} postsPerPage={dataPerPage} setCurrent={setCurrent} current={current}/>
       </div>
     </div>
   );
