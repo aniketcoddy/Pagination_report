@@ -25,10 +25,10 @@ export default function Home() {
   return (
     <div className="flex flex-col border-2 border-black h-[690px] m-2 items-center rounded-xl shadow-xl shadow-black">
       {/* heading */}
-      <div className="bg-white flex justify-between items-center py-1 px-3 md:w-[770px] lg:w-[1060px] xl:w-[1250px] 2xl:w-[1500px] row-start-1 row-end-3">
+      <div className="bg-white flex justify-between gap-14 items-center py-1 px-3 md:w-[770px] lg:w-[1060px] xl:w-[1250px] 2xl:w-[1500px] row-start-1 row-end-3">
         <h1 className="text-white hidden sm:flex">.</h1>
         <h1 className="text-sm font-bold py-2 sm:text-center sm:text-lg xl:text-2xl">Recently Generated Reports</h1>
-        <div className="flex gap-2 py-2 mr-6">
+        <div className="flex gap-2 py-2 2xl:mr-6">
           <button className="border-[2px] p-[2px] border-gray-400 rounded-md"><LuFilter className="text-gray-500 sm:w-5 sm:h-5 xl:w-6 xl:h-6" /></button>
           <button className="border-[2px] p-[2px] border-gray-400 rounded-md"><MdOutlineCancel className="text-gray-500 sm:w-5 sm:h-5 xl:w-6 xl:h-6" /></button>
         </div>
@@ -107,7 +107,7 @@ export default function Home() {
         </div>
       </div>
 
-      <div className="border-t-[1px] gap-10 border-gray-300 w-full flex justify-center items-center">
+      <div className="border-t-[1px] mb-3 border-gray-300 w-full flex flex-col md:flex-row justify-center items-center">
         <Pagination totalPosts={data.length} postsPerPage={dataPerPage} setCurrent={setCurrent} current={current} />
         <div className="flex items-center gap-3">
           <p className="flex text-sm font-medium text-gray-500">Rows per page</p>
